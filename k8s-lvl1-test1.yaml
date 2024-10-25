@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: red-devops-t1q5
+spec:
+  containers:
+  - name: red-main-devops-t1q5
+    image: fedora:latest
+    command: ['/bin/bash', '-c', 'sleep 1000']
+  initContainers:
+  - name: red-init-devops-t1q5
+    image: fedora:latest
+    command: ['/bin/bash', '-c', 'echo "Welcome!"']

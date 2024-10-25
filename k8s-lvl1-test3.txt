@@ -1,0 +1,3 @@
+kubectl rollout history deployment/app
+
+kubectl rollout undo deployment/app --to-revision=2
