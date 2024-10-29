@@ -4,8 +4,8 @@ kind: ConfigMap
 metadata:
   name: php-config
 data:
-  # property-like keys; each key maps to a simple value
-  variables_order: "EGPCS"
+  php.ini: |
+    variables_order = "EGPCS"
 ---
 apiVersion: v1
 kind: Secret
@@ -17,7 +17,7 @@ stringData:
   mysql_database: db1
   mysql_user: user1
   mysql_password: pass1
-  mysql_host: host1
+  mysql_host: mysql-service
 ---
 apiVersion: apps/v1
 kind: Deployment
