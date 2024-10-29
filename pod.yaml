@@ -44,7 +44,7 @@ kind: Service
 metadata:
   name: jenkins-service
 spec:
-  type: nodePort
+  type: NodePort
   selector:
     app: jenkins
   ports:
