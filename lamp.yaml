@@ -33,9 +33,16 @@ spec:
       labels:
         app: lamp-wp
     spec:
+      volumes:
+        - name: php-config-volume
+          configMap:
+            name: php-config
       containers:
       - name: httpd-php-container
         image: webdevops/php-apache:alpine-3-php7
+        volumeMounts:
+          - name: php-config-volume
+            mountPath: /opt/docker/etc/php
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
