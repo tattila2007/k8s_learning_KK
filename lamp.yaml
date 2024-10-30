@@ -34,7 +34,7 @@ spec:
         app: lamp-wp
     spec:
       volumes:
-        - name: php-config-volume
+        - name: ini
           configMap:
             name: php-config
             items:            #<- This extra syntax to make subPath work properly
