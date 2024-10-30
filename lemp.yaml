@@ -83,7 +83,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: mysql-user-pass
-              key: user
+              key: username
         - name: MYSQL_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -111,7 +111,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: mysql-user-pass
-              key: user
+              key: username
         - name: MYSQL_PASSWORD
           valueFrom:
             secretKeyRef:
