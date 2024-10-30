@@ -2,31 +2,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ic-deploy-datacenter
+  name: ic-deploy-devops
 spec:
   selector:
     matchLabels:
-      app: ic-datacenter
+      app: ic-devops
   replicas: 1
   template:
     metadata:
       labels:
-        app: ic-datacenter
+        app: ic-devops
     spec:
       volumes:
-      - name: ic-volume-datacenter
+      - name: ic-volume-devops
         emptyDir: {}
       containers:
-      - name: ic-main-datacenter
-        image: debian:latest
-        command: ['/bin/bash', '-c', 'echo Init Done - Welcome to xFusionCorp Industries > /ic/news && sleep 3600']
+      - name: ic-main-devops
+        image: centos:latest
+        command: ['/bin/bash', '-c', ''while true; do cat /ic/official; sleep 5; done'']
         volumeMounts:
-        - name: ic-volume-datacenter
+        - name: ic-volume-devops
           mountPath: /ic
       initContainers:
-      - name: ic-msg-datacenter
-        image: debian:latest
-        command: ['/bin/bash', '-c', 'while true; do cat /ic/news; sleep 5; done']
+      - name: ic-msg-devops
+        image: centos:latest
+        command: ['/bin/bash', '-c', 'echo Init Done - Welcome to xFusionCorp Industries > /ic/official']
         volumeMounts:
-        - name: ic-volume-datacenter
+        - name: ic-volume-devops
           mountPath: /ic
