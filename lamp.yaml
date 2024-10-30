@@ -37,12 +37,16 @@ spec:
         - name: php-config-volume
           configMap:
             name: php-config
+            items:            #<- This extra syntax to make subPath work properly
+            - key: php.ini
+              path: php.ini
       containers:
       - name: httpd-php-container
         image: webdevops/php-apache:alpine-3-php7
         volumeMounts:
-          - name: php-config-volume
-            mountPath: /opt/docker/etc/php
+        - name: ini
+          mountPath: /opt/docker/etc/php/php.ini
+          subPath: php.ini
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
