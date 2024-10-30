@@ -14,19 +14,19 @@ spec:
         app: ic-datacenter
     spec:
       volumes:
-  - name: ic-volume-datacenter
-    emptyDir: {}
-  containers:
-  - name: ic-main-datacenter
-    image: debian:latest
-    command: ['/bin/bash', '-c', 'echo Init Done - Welcome to xFusionCorp Industries > /ic/news']
-    volumeMounts:
+      - name: ic-volume-datacenter
+        emptyDir: {}
+      containers:
+      - name: ic-main-datacenter
+        image: debian:latest
+        command: ['/bin/bash', '-c', 'echo Init Done - Welcome to xFusionCorp Industries > /ic/news']
+        volumeMounts:
         - name: ic-volume-datacenter
           mountPath: /ic
-  initContainers:
-  - name: ic-msg-datacenter
-    image: debian:latest
-    command: ['/bin/bash', '-c', 'while true; do cat /ic/news; sleep 5; done']
-    volumeMounts:
+      initContainers:
+      - name: ic-msg-datacenter
+        image: debian:latest
+        command: ['/bin/bash', '-c', 'while true; do cat /ic/news; sleep 5; done']
+        volumeMounts:
         - name: ic-volume-datacenter
           mountPath: /ic
