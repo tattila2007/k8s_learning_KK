@@ -19,7 +19,7 @@ spec:
       containers:
       - name: ic-main-datacenter
         image: debian:latest
-        command: ['/bin/bash', '-c', 'echo Init Done - Welcome to xFusionCorp Industries > /ic/news']
+        command: ['/bin/bash', '-c', 'echo Init Done - Welcome to xFusionCorp Industries > /ic/news && sleep 3600']
         volumeMounts:
         - name: ic-volume-datacenter
           mountPath: /ic
