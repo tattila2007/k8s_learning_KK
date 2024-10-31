@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: redis-container
-        image: redis-alpine
+        image: redis:alpine
         command:
           - redis-server
           - "/redis-master/redis.conf"
