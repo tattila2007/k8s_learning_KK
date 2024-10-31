@@ -8,7 +8,8 @@ spec:
   storageClassName: standard       
   capacity:
     storage: 250Mi
-  accessModes: ReadWriteOnce 
+  accessModes:
+    - ReadWriteOnce 
   hostPath:                       
     path: "/mnt/data"
   persistentVolumeReclaimPolicy: 
@@ -22,7 +23,8 @@ metadata:
     app: mysql-app 
 spec:                              
   storageClassName: standard       
-  accessModes: ReadWriteOnce             
+  accessModes:
+    - ReadWriteOnce             
   resources:
     requests:
       storage: 250Mi 
