@@ -45,7 +45,7 @@ spec:
           name: "http-server"
       volumeMounts:
         - mountPath: "/var/www/html"
-          name: pv-nautilus
+          name: pv-devops
 ---
 apiVersion: v1
 kind: Service
