@@ -1,1 +1,37 @@
-
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-fpm-deployment
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: php-fpm
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: php-fpm
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx:latest
+        ports:
+        - containerPort: 8094
+      - name: php-fpm-container
+        image: php:8.1-fpm-alpine
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: php-fpm-service
+spec:
+  type: NodePort
+  selector:
+    app: php-fpm
+  ports:
+    - protocol: TCP
+      port: 8094
+      targetPort: 8094
+      nodePort: 30012
