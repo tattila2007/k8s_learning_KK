@@ -14,13 +14,25 @@ spec:
       labels:
         app: php-fpm
     spec:
+      volumes:
+      - name: config
+        emptyDir: {}
+      - name: images
+        emptyDir: {}
       containers:
       - name: nginx-container
         image: nginx:latest
-        ports:
-        - containerPort: 8094
+        volumeMounts:
+        - mountPath: /var/www/html
+          name: shared-files
+        - mountPath: /etc/nginx
+          subPath: nginx.conf
+          name: nginx-config-volume
       - name: php-fpm-container
         image: php:8.1-fpm-alpine
+        volumeMounts:
+        - mountPath: /var/www/html
+          name: shared-files
 ---
 apiVersion: v1
 kind: Service
