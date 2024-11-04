@@ -51,7 +51,7 @@ spec:
         volumeMounts:
         - mountPath: /var/www/html
           name: shared-files
-        - mountPath: /etc/nginx
+        - mountPath: /etc/nginx/nginx.conf
           subPath: nginx.conf
           name: nginx-config-volume
       - name: php-fpm-container
