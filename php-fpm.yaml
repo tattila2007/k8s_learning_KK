@@ -9,9 +9,8 @@ data:
     }
     http {
       server {
-        listen 8094 default_server;
+        listen 8094;
         root /var/www/html;
-        server_name _;
         location / {
         root   /var/www/html;
         index  index.html index.htm index.php;
