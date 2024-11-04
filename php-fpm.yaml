@@ -9,7 +9,7 @@ data:
     }
     http {
       server {
-        listen 8094;
+        listen 8093;
         root /var/www/html;
         location / {
         root   /var/www/html;
@@ -24,41 +24,34 @@ data:
       }
     }
 ---
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-  name: php-fpm-deployment
+  name: nginx-phpfpm
   namespace: default
+  labels:
+    app: php-fpm
 spec:
-  selector:
-    matchLabels:
-      app: php-fpm
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: php-fpm
-    spec:
-      volumes:
-      - name: nginx-config-volume
-        configMap:
-          name: nginx-config
-      - name: shared-files
-        emptyDir: {}
-      containers:
-      - name: nginx-container
-        image: nginx:latest
-        volumeMounts:
-        - mountPath: /var/www/html
-          name: shared-files
-        - mountPath: /etc/nginx/nginx.conf
-          subPath: nginx.conf
-          name: nginx-config-volume
-      - name: php-fpm-container
-        image: php:8.1-fpm-alpine
-        volumeMounts:
-        - mountPath: /var/www/html
-          name: shared-files
+  volumes:
+  - name: nginx-config-volume
+    configMap:
+    name: nginx-config
+  - name: shared-files
+    emptyDir: {}
+  containers:
+  - name: nginx-container
+    image: nginx:latest
+    volumeMounts:
+    - mountPath: /var/www/html
+      name: shared-files
+    - mountPath: /etc/nginx/nginx.conf
+      subPath: nginx.conf
+      name: nginx-config-volume
+  - name: php-fpm-container
+    image: php:8.1-fpm-alpine
+    volumeMounts:
+    - mountPath: /var/www/html
+      name: shared-files
 ---
 apiVersion: v1
 kind: Service
@@ -70,6 +63,6 @@ spec:
     app: php-fpm
   ports:
     - protocol: TCP
-      port: 8094
-      targetPort: 8094
+      port: 8093
+      targetPort: 8093
       nodePort: 30012
