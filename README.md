@@ -58,4 +58,38 @@ users:
   user:
 ```
 
+4 / 7
+Weight: 12
+Create a new deployment called nginx-deploy, with image nginx:1.16 and 1 replica.
+Next, upgrade the deployment to version 1.17 using rolling update and add the annotation message
+Updated nginx image to 1.17.
 
+
+Image: nginx:1.16
+
+Task: Upgrade the version of the deployment to 1:17
+
+5 / 7
+Weight: 20
+A new deployment called alpha-mysql has been deployed in the alpha namespace. However, the pods are not running. Troubleshoot and fix the issue. The deployment should make use of the persistent volume alpha-pv to be mounted at /var/lib/mysql and should use the environment variable MYSQL_ALLOW_EMPTY_PASSWORD=1 to make use of an empty root password.
+
+
+Important: Do not alter the persistent volume.
+
+Troubleshoot and fix the issues
+
+6 / 7
+Weight: 10
+Take the backup of ETCD at the location /opt/etcd-backup.db on the controlplane node.
+
+
+Troubleshoot and fix the issues
+
+7 / 7
+Weight: 20
+Create a pod called secret-1401 in the admin1401 namespace using the busybox image. The container within the pod should be called secret-admin and should sleep for 4800 seconds.
+
+The container should mount a read-only secret volume called secret-volume at the path /etc/secret-volume. The secret being mounted has already been created for you and is called dotfile-secret.
+
+
+Pod created correctly?
