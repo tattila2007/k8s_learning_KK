@@ -1,6 +1,9 @@
 # k8s_learning
 
-k8s.gcr.io
-quay.io
-docker.io
-registry.k8s.io
+https://k8s.gcr.io
+
+https://quay.io
+
+https://docker.io
+
+https://registry.k8s.io
