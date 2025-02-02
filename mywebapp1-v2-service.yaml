@@ -6,7 +6,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    run: mywebapp1
+    run: mywebapp1-v2
   ports:
     - name: my-port-80
       protocol: TCP
