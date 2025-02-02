@@ -8,11 +8,13 @@ spec:
   selector:
     run: mywebapp1
   ports:
-    - protocol: TCP
+    - name: my-port-8080
+      protocol: TCP
       port: 8080
       targetPort: 8080
       nodePort: 30080
-    - protocol: TCP
+    - name: my-port-8081
+      protocol: TCP
       port: 8081
       targetPort: 8081
       nodePort: 30081
