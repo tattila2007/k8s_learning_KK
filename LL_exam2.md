@@ -8,8 +8,9 @@ Kubernetes.
 » setup-kubetools-previousversion.sh
 
 Task 2: Performing a Control Node Upgrade
-Upgrade the control node to the latest version of Kubernetes.
-Ensure that the kubelet and kubectl are upgraded as well.
+* Upgrade the control node to the latest version of Kubernetes.
+* Ensure that the kubelet and kubectl are upgraded as well.
+
 Task 3: Configuring Application Logging
 Create a Pod with a logging agent that runs as a sidecar container.
 The Pod should have the name "exam2-task3".
